@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gift, Sparkles, RefreshCw, Mail, Moon, Sun } from 'lucide-react';
+import { Sparkles, RefreshCw, Mail, Moon, Sun } from 'lucide-react';
 
 interface HeaderProps {
   currentStep: number;
@@ -31,13 +31,11 @@ export const Header: React.FC<HeaderProps> = ({
     >
       <div className="max-w-4xl mx-auto flex items-center justify-between gap-4">
         {/* Brand Logo & Name */}
-        <div className="flex items-center gap-3 cursor-pointer group" onClick={onReset}>
-          <div
-            className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform ${isDark ? 'bg-white text-black' : 'bg-zinc-900 text-white'
-              }`}
-          >
-            <Gift className={`w-5 h-5 ${isDark ? 'text-black' : 'text-white'}`} />
-          </div>
+        <div className="flex items-center cursor-pointer group" onClick={onReset}>
+          <img
+            src="/JCo new logo.avif"
+            alt="JCo Logo"
+            className="w-auto h-10 " />
           <div>
             <div className="flex items-center gap-2">
               <span
