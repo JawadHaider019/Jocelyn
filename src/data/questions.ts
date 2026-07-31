@@ -1,5 +1,8 @@
 import { QuestionStep, GiftBoxItem, ShippingDetails } from '../types';
 
+const todayObj = new Date();
+const dynamicTodayStr = `${todayObj.getMonth() + 1}/${todayObj.getDate()}/${todayObj.getFullYear()}`;
+
 export const INITIAL_SHIPPING: ShippingDetails = {
   name: 'Ahmad test',
   email: 'test@example.com',
@@ -7,10 +10,11 @@ export const INITIAL_SHIPPING: ShippingDetails = {
   phoneCountry: 'United States',
   phoneCode: '+1',
   phone: '345-678-9789',
-  shipDate: '7/29/2026',
+  shipDate: dynamicTodayStr,
   address: 'Yerevan, Armenia',
   birthdayMonth: '07',
   birthdayDay: '29',
+  birthdayYear: '1998',
 };
 
 export const QUESTION_STEPS: QuestionStep[] = [
@@ -70,11 +74,11 @@ export const QUESTION_STEPS: QuestionStep[] = [
     id: 4,
     key: 'cravings',
     title: 'Foodie Cravings',
-    botMessage: 'What’s your go-to foodie craving? Sweet, savory, healthy—or all of the above?',
+    botMessage: 'What’s your go-to foodie craving? Sweet, savory, healthy or all of the above?',
     type: 'multi-select',
     options: [
-      { id: 'sweets', label: 'Sweets 🍫 🍪', description: 'Chocolates, cookies & pastries' },
-      { id: 'savory', label: 'Savory Snacks & Spreads 🧀🌿', description: 'Artisan cheeses, nuts & crisps' },
+      { id: 'sweets', label: 'Sweets 🍫🍪', description: 'Chocolates, cookies & pastries' },
+      { id: 'savory', label: 'Savory Snacks & Spreads🧀🌿', description: 'Artisan cheeses, nuts & crisps' },
       { id: 'pizza_pasta', label: 'Pizza & Pasta 🍕🍝', description: 'Italian gourmet & sauces' },
       { id: 'healthy', label: 'Healthy Crunch 🥗', description: 'Dried fruits, granola & seeds' },
     ],

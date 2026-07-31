@@ -9,6 +9,7 @@ export interface ShippingDetails {
   address: string;
   birthdayMonth: string;
   birthdayDay: string;
+  birthdayYear?: string;
 }
 
 export interface UserPreferences {

@@ -43,9 +43,9 @@ Their choices:
 - Food Cravings: ${Array.isArray(cravings) ? cravings.join(", ") : cravings}
 
 Please generate a JSON object with:
-1. "boxTitle": A catchy, elegant title for their custom gift box (e.g. "The Zen & Artisan Refresh Box")
+1. "boxTitle": A catchy, elegant title for their custom gift product (e.g. "The Zen & Artisan Refresh Special")
 2. "customMessage": A short 2-3 sentence warm handwritten-style gift note crafted specifically mentioning their tastes (e.g. sipping green tea after a workout).
-3. "curatedHighlights": An array of 4 distinct premium gift items (e.g. "Organic Imperial Matcha Blend", "Artisanal Dark Chocolate Truffles").
+3. "curatedHighlights": An array of 1 primary featured luxury gift item (e.g. "Organic Imperial Matcha Blend").
 4. "tagline": A 1-sentence tagline.
 
 Respond strictly in valid JSON without markdown formatting.`;
@@ -72,12 +72,9 @@ Respond strictly in valid JSON without markdown formatting.`;
 
       const gift = {
         boxTitle: `The ${craftBoxName(drinks, cravings)} Gift Collection`,
-        customMessage: `Dear ${recipientName}, curated specially for your love of ${drinkStr} and ${cravingStr}! Whether you are enjoying your favorite ${hobbyStr} routine or unwinding at home, we hope every treat brings pure delight.`,
+        customMessage: `Dear ${recipientName}, curated specially for your love of ${drinkStr} and ${cravingStr}! Whether you are enjoying your favorite ${hobbyStr} routine or unwinding at home, we hope this bring pure delight.`,
         curatedHighlights: [
-          `Premium ${drinkStr || "Artisanal Tea"} Selection`,
-          `Handcrafted ${cravingStr || "Gourmet Chocolates"} Treat Box`,
-          `Luxury Ceramic Mug & Infuser`,
-          `Artisanal Honey & Spiced Snack Pairings`
+          `Premium ${drinkStr || "Artisanal Tea"} Selection`
         ],
         tagline: "Curated with care to bring warmth, flavor, and relaxation to your doorstep."
       };

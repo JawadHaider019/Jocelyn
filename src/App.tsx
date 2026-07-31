@@ -33,8 +33,13 @@ export default function App() {
 
   // Helper to toggle options in multi-select or single-select steps
   const handleToggleOption = (label: string) => {
-    if (currentStep.key === 'hobbies' || currentStep.key === 'drinks' || currentStep.key === 'cravings') {
-      const currentList = preferences[currentStep.key] as string[];
+    if (
+      currentStep.key === 'hobbies' ||
+      currentStep.key === 'drinks' ||
+      currentStep.key === 'cravings' ||
+      currentStep.key === 'relax'
+    ) {
+      const currentList = (preferences[currentStep.key] as string[]) || [];
       const exists = currentList.includes(label);
       const updated = exists
         ? currentList.filter((item) => item !== label)
@@ -43,11 +48,6 @@ export default function App() {
       setPreferences((prev) => ({
         ...prev,
         [currentStep.key]: updated,
-      }));
-    } else if (currentStep.key === 'relax') {
-      setPreferences((prev) => ({
-        ...prev,
-        relax: [label],
       }));
     }
   };
@@ -126,7 +126,7 @@ export default function App() {
     Boolean(preferences.shipping.name && preferences.shipping.email),
   ].filter(Boolean).length;
 
-  // Build curated gift items based on selected options
+  // Build curated gift item (only 1 product shown at the end)
   const getCuratedItems = (): GiftBoxItem[] => {
     const items: GiftBoxItem[] = [];
     const allText = [
@@ -145,44 +145,29 @@ export default function App() {
     if (allText.includes('gaming')) items.push(GIFT_CATALOG.gaming);
     if (allText.includes('sleep')) items.push(GIFT_CATALOG.sleep);
 
-    // Fallbacks if list is small
-    if (items.length < 4) {
-      const fallbacks = [
-        GIFT_CATALOG.chai_tea,
-        GIFT_CATALOG.sweets,
-        GIFT_CATALOG.savory,
-        GIFT_CATALOG.fitness,
-        GIFT_CATALOG.healthy,
-      ];
-      for (const fb of fallbacks) {
-        if (!items.find((i) => i.id === fb.id)) {
-          items.push(fb);
-        }
-        if (items.length >= 4) break;
-      }
+    if (items.length === 0) {
+      items.push(GIFT_CATALOG.chai_tea);
     }
 
-    return items;
+    // Return only 1 product at the end
+    return items.slice(0, 1);
   };
 
   return (
     <div
-      className={`min-h-screen font-sans flex flex-col antialiased transition-colors duration-300 relative ${
-        isDark
+      className={`min-h-screen font-sans flex flex-col antialiased transition-colors duration-300 relative ${isDark
           ? 'bg-black text-zinc-100 selection:bg-white selection:text-black'
           : 'bg-zinc-50 text-zinc-900 selection:bg-zinc-900 selection:text-white'
-      }`}
+        }`}
     >
       {/* Background Soft Glass Glow Orbs */}
       <div
-        className={`fixed top-1/4 left-10 w-96 h-96 rounded-full blur-[120px] pointer-events-none transition-opacity ${
-          isDark ? 'bg-white/[0.02]' : 'bg-zinc-300/40'
-        }`}
+        className={`fixed top-1/4 left-10 w-96 h-96 rounded-full blur-[120px] pointer-events-none transition-opacity ${isDark ? 'bg-white/[0.02]' : 'bg-zinc-300/40'
+          }`}
       />
       <div
-        className={`fixed bottom-10 right-10 w-96 h-96 rounded-full blur-[140px] pointer-events-none transition-opacity ${
-          isDark ? 'bg-zinc-700/[0.04]' : 'bg-zinc-200/60'
-        }`}
+        className={`fixed bottom-10 right-10 w-96 h-96 rounded-full blur-[140px] pointer-events-none transition-opacity ${isDark ? 'bg-zinc-700/[0.04]' : 'bg-zinc-200/60'
+          }`}
       />
 
       {/* App Header */}
@@ -252,11 +237,10 @@ export default function App() {
               {isCuratingLoading ? (
                 <div className="text-center py-20 space-y-4">
                   <div
-                    className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto animate-spin ${
-                      isDark
+                    className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto animate-spin ${isDark
                         ? 'bg-zinc-900 text-white border border-zinc-700'
                         : 'bg-white text-zinc-900 border border-black/10 shadow-md'
-                    }`}
+                      }`}
                   >
                     <Sparkles className={`w-8 h-8 ${isDark ? 'text-white' : 'text-zinc-900'}`} />
                   </div>
@@ -266,9 +250,8 @@ export default function App() {
                     Curating Your Custom Gift Box...
                   </h3>
                   <p
-                    className={`text-xs max-w-sm mx-auto ${
-                      isDark ? 'text-zinc-400' : 'text-zinc-600'
-                    }`}
+                    className={`text-xs max-w-sm mx-auto ${isDark ? 'text-zinc-400' : 'text-zinc-600'
+                      }`}
                   >
                     Matching your Chai Tea, Sweets & Fitness preferences with handcrafted artisanal gifts.
                   </p>
