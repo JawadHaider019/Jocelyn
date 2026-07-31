@@ -24,7 +24,7 @@ export default function App() {
     shipping: INITIAL_SHIPPING,
   });
 
-  const [aiGiftData, setAiGiftData] = useState<any>(null);
+  const [curatedGiftData, setCuratedGiftData] = useState<any>(null);
   const [isCuratingLoading, setIsCuratingLoading] = useState(false);
   const [isSummaryOpen, setIsSummaryOpen] = useState(false);
   const [isSupportOpen, setIsSupportOpen] = useState(false);
@@ -85,7 +85,7 @@ export default function App() {
         birthdayDay: '29',
       },
     });
-    setAiGiftData(null);
+    setCuratedGiftData(null);
     setCurrentStepIndex(0);
   };
 
@@ -108,7 +108,7 @@ export default function App() {
       });
       const data = await res.json();
       if (data.success) {
-        setAiGiftData(data.gift);
+        setCuratedGiftData(data.gift);
       }
     } catch (err) {
       console.error('Curate gift API error:', err);
@@ -260,7 +260,7 @@ export default function App() {
                 <UnboxingReveal
                   key="reveal"
                   preferences={preferences}
-                  aiGiftData={aiGiftData}
+                  curatedGiftData={curatedGiftData}
                   giftItems={getCuratedItems()}
                   onRestart={handleReset}
                   onOpenSupport={() => setIsSupportOpen(true)}

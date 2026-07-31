@@ -20,7 +20,7 @@ import { UserPreferences, GiftBoxItem, RecommendationFeedback } from '../types';
 
 interface UnboxingRevealProps {
   preferences: UserPreferences;
-  aiGiftData?: any;
+  curatedGiftData?: any;
   giftItems: GiftBoxItem[];
   onRestart: () => void;
   onOpenSupport: () => void;
@@ -37,7 +37,7 @@ const SENTIMENT_TAGS = [
 
 export const UnboxingReveal: React.FC<UnboxingRevealProps> = ({
   preferences,
-  aiGiftData,
+  curatedGiftData,
   giftItems,
   onRestart,
   onOpenSupport,
@@ -109,8 +109,8 @@ export const UnboxingReveal: React.FC<UnboxingRevealProps> = ({
     setIsSubmitted(true);
   };
 
-  const boxTitle = aiGiftData?.boxTitle || `The Custom ${drinks[0] || 'Luxury'} & ${cravings[0] || 'Gourmet'} Gift Box`;
-  const customNote = aiGiftData?.customMessage || `Dear ${recipientName}, curated specially for your love of ${drinks.join(', ') || 'Chai Tea'} and ${cravings.join(', ') || 'Sweets'}! We hope every item brings warmth and joy.`;
+  const boxTitle = curatedGiftData?.boxTitle || `The Custom ${drinks[0] || 'Luxury'} & ${cravings[0] || 'Gourmet'} Gift Box`;
+  const customNote = curatedGiftData?.customMessage || `Dear ${recipientName}, curated specially for your love of ${drinks.join(', ') || 'Chai Tea'} and ${cravings.join(', ') || 'Sweets'}! We hope every item brings warmth and joy.`;
 
   return (
     <motion.div

@@ -44,7 +44,7 @@ export const WelcomeCard: React.FC<WelcomeCardProps> = ({ onStart, onQuickFill, 
               }`}
           >
             <Sparkles className={`w-3.5 h-3.5 ${isDark ? 'text-white' : 'text-white'}`} />
-            Jocelyn Gift AI Assistant
+            Jocelyn Gift Concierge
           </motion.div>
 
           {/* Main Title */}

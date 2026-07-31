@@ -16,7 +16,7 @@ async function startServer() {
 
   app.use(express.json());
 
-  // API Route: AI-assisted custom gift curation and personalized note
+  // API Route: Custom gift curation and personalized note
   app.post("/api/curate-gift", async (req, res) => {
     try {
       const { hobbies, relax, drinks, cravings, name } = req.body;
@@ -28,11 +28,6 @@ async function startServer() {
         try {
           const ai = new GoogleGenAI({
             apiKey,
-            httpOptions: {
-              headers: {
-                'User-Agent': 'aistudio-build',
-              },
-            },
           });
           const prompt = `You are a luxury gift curator for Jocelyn & Co. 
 The recipient is ${recipientName}.
@@ -59,9 +54,9 @@ Respond strictly in valid JSON without markdown formatting.`;
           const cleanedText = responseText.replace(/```json/g, "").replace(/```/g, "").trim();
           const parsed = JSON.parse(cleanedText);
 
-          return res.json({ success: true, gift: parsed, source: "ai" });
+          return res.json({ success: true, gift: parsed, source: "curator-engine" });
         } catch (aiErr) {
-          console.error("Gemini API call error, using smart fallback:", aiErr);
+          console.error("Curator API call error, using smart fallback:", aiErr);
         }
       }
 
