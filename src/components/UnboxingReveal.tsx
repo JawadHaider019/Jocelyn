@@ -256,20 +256,12 @@ export const UnboxingReveal: React.FC<UnboxingRevealProps> = ({
           </div>
         </div>
 
-        {/* Single Curated Product Showcase */}
-        <h3
-          className={`text-sm font-semibold mb-4 flex items-center gap-2 ${isDark ? 'text-zinc-200' : 'text-zinc-800'
-            }`}
-        >
-          <Sparkles className={`w-4 h-4 ${isDark ? 'text-white' : 'text-zinc-900'}`} />
-          <span>Your Curated Product</span>
-        </h3>
 
-        <div className="grid grid-cols-1 gap-4">
+        {/* <div className="grid grid-cols-1 gap-4">
           {giftItems.slice(0, 1).map((item) => (
             <div
               key={item.id}
-              className={`backdrop-blur-md border rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-5 sm:gap-6 transition-all group ${isDark
+              className={`backdrop-blur-md border rounded-2xl flex flex-col sm:flex-row items-center gap-5 sm:gap-6 transition-all group ${isDark
                 ? 'bg-white/[0.03] border-white/10 hover:bg-white/[0.07] hover:border-white/20'
                 : 'bg-white/80 border-black/10 hover:bg-white hover:border-black/20 shadow-sm'
                 }`}
@@ -303,7 +295,7 @@ export const UnboxingReveal: React.FC<UnboxingRevealProps> = ({
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* Recommendation Form Section */}
