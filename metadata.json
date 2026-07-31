@@ -1,0 +1,6 @@
+{
+  "name": "GiftCurator",
+  "description": "An effortless, premium conversational gift box experience with smart preference chat, smooth shipping details, and personalized gift unboxing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
