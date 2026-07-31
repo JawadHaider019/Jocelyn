@@ -118,7 +118,7 @@ export const UnboxingReveal: React.FC<UnboxingRevealProps> = ({
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.4 }}
-      className="w-full max-w-3xl mx-auto space-y-8"
+      className="w-full max-w-3xl mx-auto space-y-4"
     >
       {/* Hero Tada Card */}
       <div
